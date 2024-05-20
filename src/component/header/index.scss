@@ -1,0 +1,106 @@
+.header {
+    background-color: #0f0f0f;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    
+    width: 100%;
+   
+    .header__left {
+      display: flex;
+      
+      align-items: center;
+        margin-left: 30px;
+        gap: 30px;
+      .ytdad {
+        
+       
+        width: 28%;
+        
+      }
+      .vn {
+        color: white;
+      }
+     
+      .menuicon {
+        color: white;
+        font-size: 20px;
+      }
+     
+    }
+    .header__center {
+      display: flex;
+      align-items: center;
+  
+      .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+  
+        .input {
+          padding-right: 30px; // Để trống không gian cho biểu tượng tìm kiếm
+          background-color: #121212;
+          border-radius: 25px 0px 0px 25px;
+          padding: 5px 10px;
+          width: 500px;
+          height: 40px;
+          border: 0.2px solid gray;
+          color: white;
+        }
+      }
+      .search {
+        color: white;
+        background-color: #222222;
+        padding: 10px 20px;
+        border-radius: 0px 25px 25px 0px;
+        width: 64px;
+        height: 40px;
+        border: 0.2px solid gray;
+      }
+      .but {
+       
+        margin-left: 15px;
+        margin-top: 5px;
+        .icon_header{
+        
+          color: white;
+          padding: 14px 17px;
+          background-color: gray;
+          border-radius: 100%;
+
+        }
+        .icon_header:hover{
+background-color: #3D3D3D;
+transition: 0.5s;
+        }
+        
+      }
+    }
+ .header__right {
+  margin-right: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .bell {
+    color: white;
+    font-size: 25px;
+  }
+  .cam {
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+}

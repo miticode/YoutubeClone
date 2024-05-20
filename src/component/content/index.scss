@@ -1,0 +1,370 @@
+.content {
+  padding-top: 60px;
+
+  .sidebardad {
+    background-color: black;
+position: fixed;
+.sidebar::-webkit-scrollbar {
+  width: 5px; 
+ 
+}
+
+
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #888; 
+ 
+}
+    .sidebar {
+      color: white;
+      .sidebar1 {
+        flex-direction: column;
+        margin-left: 25px;
+        margin-top: 25px;
+        .home {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          .word1 {
+            font-size: 15px;
+          }
+        }
+        .short {
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          .word2 {
+            font-size: 15px;
+          }
+        }
+        .sub {
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          .word3 {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+    .line {
+      margin-top: 20px;
+      margin-right: 10px;
+      border: none;
+      border-top: 1px solid #444;
+    }
+    .you {
+      display: flex;
+      gap: 20px;
+      margin-left: 25px;
+      margin-top: 15px;
+      .yword {
+        font-size: 22px;
+      }
+      .yicon {
+        margin-top: 5px;
+      }
+    }
+    .sidebar2 {
+      flex-direction: column;
+      margin-left: 25px;
+      margin-top: 20px;
+      .channel {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .word1 {
+          font-size: 15px;
+        }
+      }
+      .history {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .word2 {
+          font-size: 15px;
+        }
+      }
+      .playlist {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .word3 {
+          font-size: 15px;
+        }
+      }
+      .Yourvideo {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .word3 {
+          font-size: 15px;
+        }
+      }
+      .watchlater {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .word3 {
+          font-size: 15px;
+        }
+      }
+      .like {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .word3 {
+          font-size: 15px;
+        }
+      }
+    }
+    .supword {
+      font-size: 20px;
+      margin-left: 25px;
+      margin-top: 15px;
+    }
+    .sidebar3 {
+      margin-top: 15px;
+      margin-left: 20px;
+      .killerqueen {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .emche {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .mixi {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .sep {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .vu {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .lol {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .valo {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .showmore {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-left: 8px;
+        .showicon {
+          font-size: 17px;
+        }
+        .showord {
+          font-size: 17px;
+        }
+      }
+    }
+    .sidebar4{
+        flex-direction: column;
+        margin-left: 25px;
+        margin-top: 20px;
+        .trending {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .music {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .game {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .new {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .sport {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+    }
+    .sidebar5{
+        flex-direction: column;
+        margin-left: 25px;
+        margin-top: 20px;
+        .prenium {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .stu {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .ytmu {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .kid {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+    }
+    .sidebar6{
+        flex-direction: column;
+        margin-left: 25px;
+        margin-top: 20px;
+        .setting {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .rp {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .help {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+          .send {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .word1 {
+              font-size: 15px;
+            }
+          }
+    }
+    .sidebar7{
+      margin-left: 30px;
+      margin-top: 15px;
+      .about{
+        display: flex;
+        gap: 20px;
+    
+      }
+      .ct{
+        display: flex;
+        gap: 20px;
+    
+      }
+      .term{
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+  .maincontent {
+ 
+    padding-left: 17%;
+    padding-top: 19px;
+    .slider{
+      width: 1570px;
+      
+    }
+   
+  }
+}

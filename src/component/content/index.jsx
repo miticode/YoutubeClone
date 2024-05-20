@@ -2,6 +2,7 @@ import { Avatar, Carousel, Col, Row } from "antd";
 import "./index.scss";
 import { DownOutlined, RightOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import Video from "../video";
 
 function Content() {
   const [handleshowscrollbar, setHandleShowScroll] = useState([false]);
@@ -15,7 +16,8 @@ function Content() {
     height: "50px",
     color: "white",
     display: "flex",
-
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: "black",
   };
 
@@ -262,7 +264,7 @@ function Content() {
                   />
                 </Avatar>
                 <div>MixiGaming</div>
-                <svg  
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height={16}
                   viewBox="0 0 16 16"
@@ -768,16 +770,23 @@ function Content() {
             </h5>
 
             <h5 className="phukdien" style={contentStyle}>
-              Contempoary R&B
+              Contempoary 
             </h5>
           </Carousel>
-          <div className="maincontent1">
-            
-           
-            
-            
-           
-        
+          <div className="maincontent1" >
+            <Row gutter={[16, 16]}>
+              {[...new Array(20)].map((_, index) => (
+                <Col
+                  key={index}
+                  lg={{ span: 6 }}
+                  md={{ span: 8 }}
+                  xs={{ span: 24 }}
+                 
+                >
+                  <Video />
+                </Col>
+              ))}
+            </Row>
           </div>
         </Col>
       </Row>

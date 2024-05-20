@@ -262,7 +262,7 @@ function Content() {
                   />
                 </Avatar>
                 <div>MixiGaming</div>
-                <svg
+                <svg  
                   xmlns="http://www.w3.org/2000/svg"
                   height={16}
                   viewBox="0 0 16 16"
@@ -715,7 +715,7 @@ function Content() {
             vertical={false}
             dots={false}
           >
-            <h5 className="phukdien" style={contentStyle}>
+            <h5 className="danh" style={contentStyle}>
               ALL
             </h5>
 
@@ -772,86 +772,7 @@ function Content() {
             </h5>
           </Carousel>
           <div className="maincontent1">
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
-            <div>video</div>
+            
            
             
             

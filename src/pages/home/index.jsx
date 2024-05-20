@@ -7,6 +7,7 @@ function Home() {
     <div className="home">
         <Header/>
         <Content/>
+       
     </div>
   )
 }

@@ -19,7 +19,6 @@ function Content() {
     backgroundColor: "black",
   };
 
- 
   return (
     <div className="content">
       <Row>
@@ -716,51 +715,148 @@ function Content() {
             vertical={false}
             dots={false}
           >
-            <div>
-              <h3 style={contentStyle}>ALL</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Gaming</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Music</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Live</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Tft</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>LoL</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Justin Bieber</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Playlists</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Live</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>News</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Lo-fi</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Bó Đạt chắc</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>miti</h3>
-            </div>
-            <div>
-              <h3 style={contentStyle}>Contempoary R&B</h3>
-            </div>
+            <h5 className="phukdien" style={contentStyle}>
+              ALL
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Gaming
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Music
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Live
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Tft
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              LoL
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Justin Bieber
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Playlists
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Live
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              News
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Lo-fi
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Bó Đạt chắc
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              miti
+            </h5>
+
+            <h5 className="phukdien" style={contentStyle}>
+              Contempoary R&B
+            </h5>
           </Carousel>
           <div className="maincontent1">
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+            <div>video</div>
+           
             
+            
+           
+        
           </div>
         </Col>
       </Row>

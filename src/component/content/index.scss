@@ -4,6 +4,10 @@
   .sidebardad {
     background-color: black;
 position: fixed;
+top: 60px;
+left: 0;
+height: calc(100% - 60px);
+z-index: 999;
 .sidebar::-webkit-scrollbar {
   width: 5px; 
  
@@ -358,13 +362,29 @@ position: fixed;
     }
   }
   .maincontent {
- 
     padding-left: 17%;
     padding-top: 19px;
+ 
+    
     .slider{
+    position: fixed;
       width: 1570px;
-      
+      background-color: #0F0F0F;
+      color: white;
+      .phukdien{
+        padding: 10px 20px;
+        background-color: #272727;
+        border-radius: 20px 25px;
+      }
+      .phukdien:hover{
+        background-color: #3F3F3F;
+        transition: 0.5s;
+      }
     }
-   
+   .maincontent1{
+    color: white;
+    padding-top: 50px;
+    padding-left: 15px;
+   }
   }
 }

@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    
+    z-index: 1000;
     width: 100%;
    
     .header__left {
@@ -67,12 +67,12 @@
         
           color: white;
           padding: 14px 17px;
-          background-color: gray;
+          background-color: #272727;
           border-radius: 100%;
 
         }
         .icon_header:hover{
-background-color: #3D3D3D;
+          background-color: #3F3F3F;
 transition: 0.5s;
         }
         

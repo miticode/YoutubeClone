@@ -1,6 +1,7 @@
 import "./index.scss"
 
 function Video() {
+   
   return (
     <div className="video">
 <div className="video_top">

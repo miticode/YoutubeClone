@@ -4,21 +4,26 @@
 
   font-weight: 500;
   font-size: 14.4px;
+  
 
   cursor: pointer;
   &_top {
     margin-bottom: 8px;
     img {
       width: 100%;
+      border-radius: 15px;
     }
     span {
       position: absolute;
 
-      right: 4.8px;
+      right: 25px;
       padding: 3.2px;
       background: #080808ec;
       border-radius: 3px;
+      bottom: 125px;
+      
     }
+    
   }
   &_title {
     margin-bottom: 0.1 rem;

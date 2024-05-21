@@ -21,6 +21,8 @@ function Content() {
     backgroundColor: "black",
   };
 
+  
+
   return (
     <div className="content">
       <Row>
@@ -689,33 +691,38 @@ function Content() {
                 <div>Press</div>
                 <div>Copyright</div>
               </div>
-              <div className="ct">
+              <div className="about">
                 <div>Contact us</div>
                 <div>Creator</div>
                 <div>Advertise</div>
               </div>
               <div>Developers</div>
-              <div className="term">
+              <div className="about">
                 <div>Terms</div>
                 <div>Privacy</div>
                 <div>Policy & Safety</div>
               </div>
+              <div className="about">
               <div>How YouTube works</div>
               <div>Test new features</div>
-              <div>© 2024 Google LLC</div>
+              
+              </div>
+              <div className="ll">© 2024 Google LLC</div>
             </div>
           </div>
         </Col>
-        <Col className="maincontent" span={20}>
+        <Col className="maincontent" span={25}>
+          
           <Carousel
             className="slider"
             arrows
             dotPosition="left"
             infinite={false}
             slidesToShow={10}
-            slidesToScroll={1}
+            slidesToScroll={2}
             vertical={false}
             dots={false}
+           
           >
             <h5 className="danh" style={contentStyle}>
               ALL
@@ -775,7 +782,7 @@ function Content() {
           </Carousel>
           <div className="maincontent1" >
             <Row gutter={[16, 16]}>
-              {[...new Array(20)].map((_, index) => (
+              {[...new Array(50)].map((_, index) => (
                 <Col
                   key={index}
                   lg={{ span: 6 }}
@@ -788,8 +795,10 @@ function Content() {
               ))}
             </Row>
           </div>
+          
         </Col>
       </Row>
+      
     </div>
   );
 }

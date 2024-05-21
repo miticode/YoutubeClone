@@ -1,54 +1,45 @@
-.video {
-  margin-bottom: 16px;
-  padding: 11.2px;
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // Mỗi hàng 3 cột
+  gap: 16px; // Khoảng cách giữa các video
+  padding: 16px; // Khoảng cách bên trong container
+}
 
-  font-weight: 500;
-  font-size: 14.4px;
-  
-
+.video-item {
+  background-color: #000000;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
   cursor: pointer;
-  &_top {
-    margin-bottom: 8px;
-    img {
-      width: 100%;
-      border-radius: 15px;
-    }
-    span {
-      position: absolute;
+}
 
-      right: 25px;
-      padding: 3.2px;
-      background: #080808ec;
-      border-radius: 3px;
-      bottom: 125px;
-      
-    }
-    
-  }
-  &_title {
-    margin-bottom: 0.1 rem;
-    color: #fff;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-  }
-  &_details {
-    display: flex;
-    align-items: center;
-  }
-  &_channel {
-display: flex;
-align-items: center;
-margin: 0.5rem 0;
-img{
-    width: 28px;
-    height:25px;
-    border-radius: 50%;
-    cursor: pointer;
+.video-item img {
+  width: 100%;
+  height: auto;
 }
-p{
-    margin-bottom: 0;
+
+.video-info {
+  padding: 8px;
+  text-align: left;
 }
-  }
+
+.video-info h4 {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.video-info p {
+  color: white;
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.video-item:hover {
+  transform: scale(1.05); // Hiệu ứng hover
+}
+.video-title {
+  color: white;
 }

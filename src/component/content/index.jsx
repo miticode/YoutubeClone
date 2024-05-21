@@ -16,12 +16,10 @@ function Content() {
     height: "50px",
     color: "white",
     display: "flex",
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "black",
   };
-
-  
 
   return (
     <div className="content">
@@ -703,16 +701,14 @@ function Content() {
                 <div>Policy & Safety</div>
               </div>
               <div className="about">
-              <div>How YouTube works</div>
-              <div>Test new features</div>
-              
+                <div>How YouTube works</div>
+                <div>Test new features</div>
               </div>
               <div className="ll">© 2024 Google LLC</div>
             </div>
           </div>
         </Col>
         <Col className="maincontent" span={25}>
-          
           <Carousel
             className="slider"
             arrows
@@ -722,7 +718,6 @@ function Content() {
             slidesToScroll={2}
             vertical={false}
             dots={false}
-           
           >
             <h5 className="danh" style={contentStyle}>
               ALL
@@ -777,28 +772,15 @@ function Content() {
             </h5>
 
             <h5 className="phukdien" style={contentStyle}>
-              Contempoary 
+              Contempoary
             </h5>
           </Carousel>
-          <div className="maincontent1" >
-            <Row gutter={[16, 16]}>
-              {[...new Array(50)].map((_, index) => (
-                <Col
-                  key={index}
-                  lg={{ span: 6 }}
-                  md={{ span: 8 }}
-                  xs={{ span: 24 }}
-                 
-                >
-                  <Video />
-                </Col>
-              ))}
-            </Row>
-          </div>
+          <div className="maincontent1">
           
+            <Video />
+          </div>
         </Col>
       </Row>
-      
     </div>
   );
 }

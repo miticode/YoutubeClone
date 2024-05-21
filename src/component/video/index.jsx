@@ -1,29 +1,58 @@
-import "./index.scss"
+import { useEffect, useState } from "react";
+import "./index.scss";
+import { Link } from "react-router-dom";
+
 
 function Video() {
-   
+  const [api, setApi] = useState([]);
+
+  const getApi = () => {
+    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=48&regionCode=VN&key=AIzaSyCeEWGfocHlKa3v79iQPhAd5OnHMg35KMg", {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+    })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error("Failed to fetch data");
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log('real data: ', data);
+            setApi(data.items);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+  };
+
+  useEffect(() => {
+    getApi();
+  }, []);
+
   return (
-    <div className="video">
-<div className="video_top">
-    <img src="https://i.ytimg.com/an_webp/SHUbGaHETGw/mqdefault_6s.webp?du=3000&sqp=CODar7IG&rs=AOn4CLCDYWBNjjW8qg0pwlBbo-EG4WEpvg" alt="" />
-    <span>05:43</span>
-</div>
-<div className="video_title">
-    Nghe nói Gam tuyển người
-</div>
-<div className="video_details ">
-    <span>10m Views</span>
-    •
-    <span>5 days ago</span>
-</div>
-<div className="video_channel">
-    <img src="https://yt3.googleusercontent.com/9C2NZy0MIembggtMkLJJzhjLd0Pk8qaWCoNs-R3YvAeu4RsQ8o2U936-pAjDQGV9tKjSRPsy=s160-c-k-c0x00ffffff-no-rj" alt="" />
-    <p>ZerosStream</p>
-</div>
-
+    <div className="video-grid">
+        {api.length > 0 ? (
+          api.map((videodata, index) => (
+           
+            <Link to={`https://www.youtube.com/watch?v=${videodata.id}`} key={index} className="video-item">
+              <div className="thumbnail">
+                <img src={videodata.snippet.thumbnails.medium.url} alt={videodata.snippet.title} />
+              </div>
+              <div className="video-info">
+                <img src="" alt="" />
+                <h4 className="video-title">{videodata.snippet.title}</h4>
+                <p className="channel-title">{videodata.snippet.channelTitle}</p>
+                <p className="view-count">{videodata.statistics.viewCount} views</p>
+              </div>
+            </Link>
+        
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
     </div>
-
-  )
+  );
 }
 
-export default Video
+export default Video;

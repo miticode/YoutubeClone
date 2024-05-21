@@ -1,6 +1,9 @@
 .content {
   padding-top: 60px;
-
+  .content::-webkit-scrollbar-thumb {
+    background-color: #888; 
+   
+  }
   .sidebardad {
     background-color: black;
 position: fixed;

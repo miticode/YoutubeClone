@@ -20,7 +20,18 @@ function Content() {
     alignItems: "center",
     backgroundColor: "black",
   };
-
+ 
+  const formatViewCount = (viewCount) => {
+    if (viewCount >= 1_000_000_000) {
+      return (viewCount / 1_000_000_000).toFixed(1) + 'B';
+    } else if (viewCount >= 1_000_000) {
+      return (viewCount / 1_000_000).toFixed(1) + 'M';
+    } else if (viewCount >= 1_000) {
+      return (viewCount / 1_000).toFixed(1) + 'K';
+    }
+    return viewCount.toString();
+  };
+ 
   return (
     <div className="content">
       <Row>
@@ -776,13 +787,43 @@ function Content() {
             </h5>
           </Carousel>
           <div className="maincontent1">
-          
             <Video />
+            <div className="search-result">
+              <div className="left">
+                <iframe 
+              
+                 
+                  src="https://www.youtube.com/embed/caXS47CiDN8?list=RDcaXS47CiDN8"
+                  title="Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
+                  frameBorder={0}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+                
+              </div>
+              <div className="right">
+                <div className="tittle">
+                Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
+                </div  > 
+
+                <div className="created-at">
+                  sadasd
+                </div>
+                <div className="author">
+                  dsadasd
+                </div>
+
+                <div className="description">
+                  ádasdasd
+                </div>
+              </div>
+            </div>
           </div>
         </Col>
       </Row>
     </div>
   );
 }
-
+ 
 export default Content;

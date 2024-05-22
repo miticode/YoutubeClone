@@ -6,9 +6,11 @@ import { formatDistanceToNow } from "date-fns";
 
 function Video() {
   const [api, setApi] = useState([]);
-
-  const getApi = () => {
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=48&regionCode=VN&key=AIzaSyCeEWGfocHlKa3v79iQPhAd5OnHMg35KMg", {
+  const [nextPageToken, setNextPageToken] = useState('');
+  const [loading, setLoading] = useState(false);
+  const getApi = (pageToken = '') => {
+    setLoading(true);
+    fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=VN&pageToken=${pageToken}&key=AIzaSyCeEWGfocHlKa3v79iQPhAd5OnHMg35KMg`, {
         method: "GET",
         headers: { "content-type": "application/json" },
     })
@@ -19,19 +21,29 @@ function Video() {
             return res.json();
         })
         .then((data) => {
-            console.log('real data: ', data);
-            setApi(data.items);
+          setApi(prevApi => [...prevApi, ...data.items]);
+          setNextPageToken(data.nextPageToken);
+          setLoading(false);
         })
         .catch((error) => {
             console.log(error);
+            setLoading(false);
         });
   };
 
   useEffect(() => {
     getApi();
+  },[]);
+  const handleScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight && !loading) {
+      getApi(nextPageToken);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
   
 
   const convertISO8601ToDuration = (isoDuration) => {
@@ -87,6 +99,7 @@ function Video() {
         ) : (
           <p>Loading...</p>
         )}
+          {loading && <p>Loading more videos...</p>}
     </div>
   );
 }

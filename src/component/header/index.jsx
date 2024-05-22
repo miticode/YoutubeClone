@@ -5,8 +5,15 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import "./index.scss";
+import { useEffect, useState } from "react";
 
 function Header() {
+  const[videos,setVideos]= useState([])
+  const [query,setQuery] = useState('')
+  useEffect(()=>{
+
+  },[])
+  
   return (
     <div className="header">
       <div className="header__left">
@@ -81,7 +88,7 @@ function Header() {
       </div>
       <div className="header__center">
         <div className="search-container">
-          <input className="input" placeholder="Search"></input>
+          <input className="input" placeholder="Search" value={query} onChange={(event)=>setQuery(event.target.value)}/>
         </div>
         <div>
           <SearchOutlined className="search" />
@@ -144,3 +151,4 @@ function Header() {
 }
 
 export default Header;
+

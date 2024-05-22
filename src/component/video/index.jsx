@@ -35,7 +35,7 @@ function Video() {
     getApi();
   },[]);
   const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight && !loading) {
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100 && !loading) {
       getApi(nextPageToken);
     }
   };
@@ -43,7 +43,8 @@ function Video() {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [nextPageToken, loading]);
+
   
 
   const convertISO8601ToDuration = (isoDuration) => {

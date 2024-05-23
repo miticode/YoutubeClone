@@ -8,7 +8,7 @@ import "./index.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 
 function Header({ onSearchVideos }) {
@@ -38,7 +38,8 @@ if(res && res.data&&res.data.items){
     raw.map(item =>{
       let object= {};
       object.id= item.id.videoId;
-      object.title= item.snippet.tittle;
+      object.title= item.snippet.title;
+ 
       object.createdAt = item.snippet.publishedAt;
       object.author = item.snippet.channelTitle;
       object.description= item.snippet.description;
@@ -124,7 +125,7 @@ console.log('check',res)
           </svg>
         </div>
 
-        <Link to={"/"}><div className="vn">VN</div></Link>
+        <div className="vn">VN</div>
       </div>
       <div className="header__center">
      

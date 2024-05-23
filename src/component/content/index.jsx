@@ -5,6 +5,7 @@ import { DownOutlined, RightOutlined } from "@ant-design/icons";
 import Video from "../video";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
 
 function Content({ videos }) {
   
@@ -23,7 +24,7 @@ function Content({ videos }) {
     alignItems: "center",
     backgroundColor: "black",
   };
-
+  
   return (
     <div className="content">
       <Row>
@@ -794,7 +795,8 @@ function Content({ videos }) {
                   </div>
                   <div className="right">
                     <div className="title">{item.title}</div>
-                    <div className="created-at">{item.createdAt}</div>
+                   
+                    <div className="created-at">{formatDistanceToNow(new Date(item.createdAt))} ago</div>
                     <div className="author">{item.author}</div>
                     <div className="description">{item.description}</div>
                   </div>

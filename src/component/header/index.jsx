@@ -8,9 +8,12 @@ import "./index.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 function Header({ onSearchVideos }) {
   
+ 
  const [query,setQuery] = useState('');
  useEffect(()=>{
 
@@ -44,8 +47,10 @@ if(res && res.data&&res.data.items){
   }
   
   onSearchVideos(result);
+ 
 }
 console.log('check',res)
+
  }
  
   return (
@@ -53,7 +58,7 @@ console.log('check',res)
       
       <div className="header__left">
         <MenuOutlined className="menuicon" />
-        <div className="ytdad">
+        <div className="ytdad" >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="yt-logo-updated-svg_yt1"
@@ -119,7 +124,7 @@ console.log('check',res)
           </svg>
         </div>
 
-        <div className="vn">VN</div>
+        <Link to={"/"}><div className="vn">VN</div></Link>
       </div>
       <div className="header__center">
      

@@ -4,8 +4,10 @@ import { DownOutlined, RightOutlined } from "@ant-design/icons";
 
 import Video from "../video";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Content({ videos }) {
+  
   const [handleshowscrollbar, setHandleShowScroll] = useState([false]);
   const sidebarStyles = {
     overflowY: handleshowscrollbar ? "auto" : "hidden",
@@ -777,10 +779,10 @@ function Content({ videos }) {
             </h5>
           </Carousel>
           <div className="maincontent1">
-            {videos && videos.length > 0 ? (
+            { videos && videos.length > 0 ? (
               videos.map((item) => (
-                <div className="search-result" key={item.id}>
-                  <div className="left">
+                <Link to={`https://www.youtube.com/watch?v=${item.id}`} className="search-result" key={item.id}>
+                 <div className="left">
                     <iframe
                       src={`https://www.youtube.com/embed/${item.id}`}
                       title="Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
@@ -796,7 +798,8 @@ function Content({ videos }) {
                     <div className="author">{item.author}</div>
                     <div className="description">{item.description}</div>
                   </div>
-                </div>
+                </Link>
+                
               ))
             ) : (
               <Video />

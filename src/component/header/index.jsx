@@ -1,65 +1,89 @@
-import {
-  AudioOutlined,
-
-  MenuOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { AudioOutlined, MenuOutlined, SearchOutlined } from "@ant-design/icons";
 import "./index.scss";
-
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-
-
 function Header({ onSearchVideos }) {
-  
- 
- const [query,setQuery] = useState('');
- useEffect(()=>{
+  const [query, setQuery] = useState("");
+  const [searchHistory, setSearchHistory] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const searchContainerRef = useRef(null);
 
- },[])
- const handleSearchYoutube = async ()=>{
-  let res = await  axios({
-    "method": "GET",
-    "url": 'https://www.googleapis.com/youtube/v3/search',
-    "params":{
-        'part':'snippet',
-        'maxResults':'20',
-        'key':'AIzaSyCeEWGfocHlKa3v79iQPhAd5OnHMg35KMg',
-        'type': 'video',
-        'q':query
+  const handleSearchYoutube = async () => {
+    let res = await axios({
+      method: "GET",
+      url: "https://www.googleapis.com/youtube/v3/search",
+      params: {
+        part: "snippet",
+        maxResults: "20",
+        key: "AIzaSyBcQS_B_XtJSRTdQZwQqVwjHkXvBuefLlU",
+        type: "video",
+        q: query,
+      },
+    });
+
+    if (res && res.data && res.data.items) {
+      let raw = res.data.items;
+      let result = [];
+      if (raw && raw.length > 0) {
+        raw.forEach((item) => {
+          let object = {};
+          object.id = item.id.videoId;
+          object.title = item.snippet.title;
+          object.createdAt = item.snippet.publishedAt;
+          object.author = item.snippet.channelTitle;
+          object.description = item.snippet.description;
+          result.push(object);
+        });
+      }
+      onSearchVideos(result);
     }
-})
-if(res && res.data&&res.data.items){
-  let raw = res.data.items;
-  let result = [];
-  if(raw && raw.length > 0){
-    
-    raw.map(item =>{
-      let object= {};
-      object.id= item.id.videoId;
-      object.title= item.snippet.title;
- 
-      object.createdAt = item.snippet.publishedAt;
-      object.author = item.snippet.channelTitle;
-      object.description= item.snippet.description;
-      result.push(object);
-    })
-  }
-  
-  onSearchVideos(result);
- 
-}
-console.log('check',res)
 
- }
- 
+    setSearchHistory((prevHistory) => {
+      const updatedHistory = [...prevHistory];
+      if (!updatedHistory.includes(query)) {
+        updatedHistory.unshift(query);
+      }
+      return updatedHistory.slice(0, 10); // Keep only the latest 5 searches
+    });
+
+    setShowHistory(false);
+  };
+
+  const handleInputClick = () => {
+    setShowHistory(true);
+  };
+
+  const handleHistoryItemClick = (item) => {
+    setQuery(item);
+    handleSearchYoutube();
+  };
+
+  const handleClickOutside = (event) => {
+    if (
+      searchContainerRef.current &&
+      !searchContainerRef.current.contains(event.target)
+    ) {
+      setShowHistory(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showHistory) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [showHistory]);
+
   return (
     <div className="header">
-      
       <div className="header__left">
         <MenuOutlined className="menuicon" />
-        <div className="ytdad" >
+        <div className="ytdad" onClick={handleInputClick}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="yt-logo-updated-svg_yt1"
@@ -124,16 +148,58 @@ console.log('check',res)
             </svg>
           </svg>
         </div>
-
         <div className="vn">VN</div>
       </div>
       <div className="header__center">
-     
-        <div className="search-container">
-          <input className="input" placeholder="Search" value={query} onChange={(event)=> setQuery(event.target.value)} />
+        <div className="search-container" ref={searchContainerRef}>
+          <input
+            className="input"
+            placeholder="Search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            onClick={handleInputClick}
+          />
+          {showHistory && (
+            <div className="search-history">
+              {searchHistory.length > 0 ? (
+                searchHistory.map((item, index) => (
+                  <div
+                    key={index}
+                    className="history-item"
+                    onClick={() => handleHistoryItemClick(item)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height={24}
+                      style={{
+                        pointerEvents: "none",
+                        display: "inherit",
+                        width: "5%",
+                        height: "100%",
+                        fill: "white",
+                      }}
+                      viewBox="0 0 24 24"
+                      width={24}
+                      focusable="false"
+                    >
+                      <g>
+                        <path d="M14.97 16.95 10 13.87V7h2v5.76l4.03 2.49-1.06 1.7zM22 12c0 5.51-4.49 10-10 10S2 17.51 2 12h1c0 4.96 4.04 9 9 9s9-4.04 9-9-4.04-9-9-9C8.81 3 5.92 4.64 4.28 7.38c-.11.18-.22.37-.31.56L3.94 8H8v1H1.96V3h1v4.74c.04-.09.07-.17.11-.25.11-.22.23-.42.35-.63C5.22 3.86 8.51 2 12 2c5.51 0 10 4.49 10 10z" />
+                      </g>
+                    </svg>
+
+                    {item}
+
+                    <button>remove</button>
+                  </div>
+                ))
+              ) : (
+                <div className="no-history">No search history</div>
+              )}
+            </div>
+          )}
         </div>
         <div>
-         <SearchOutlined className="search" onClick={handleSearchYoutube} />
+          <SearchOutlined className="search" onClick={handleSearchYoutube} />
         </div>
         <div className="but">
           <div className="icon_header">
@@ -142,46 +208,43 @@ console.log('check',res)
         </div>
       </div>
       <div className="header__right">
-        <div className="cam"> 
-        <svg 
-          xmlns="http://www.w3.org/2000/svg"
-          height={24}
-          style={{
-            pointerEvents: "none",
-            display: "inherit",
-            width: "120%",
-            height: "100%",
-            fill: "white",
-          }}
-          viewBox="0 0 24 24"
-          width={24}
-          focusable="false"
-        >
-          <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z" />
-        </svg>
+        <div className="cam">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height={24}
+            style={{
+              pointerEvents: "none",
+              display: "inherit",
+              width: "120%",
+              height: "100%",
+              fill: "white",
+            }}
+            viewBox="0 0 24 24"
+            width={24}
+            focusable="false"
+          >
+            <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z" />
+          </svg>
         </div>
-        
-<div className="bell">
-<svg
-          xmlns="http://www.w3.org/2000/svg"
-          enableBackground="new 0 0 24 24"
-          height={24}
-          viewBox="0 0 24 24"
-          width={24}
-          focusable="false"
-          style={{
-            pointerEvents: "none",
-            display: "inherit",
-            width: "100%",
-            height: "120%",
-            fill: "white",
-          }}
-        >
-          <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z" />
-        </svg>
-</div>
-        
-
+        <div className="bell">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            enableBackground="new 0 0 24 24"
+            height={24}
+            viewBox="0 0 24 24"
+            width={24}
+            focusable="false"
+            style={{
+              pointerEvents: "none",
+              display: "inherit",
+              width: "100%",
+              height: "120%",
+              fill: "white",
+            }}
+          >
+            <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z" />
+          </svg>
+        </div>
         <img
           className="avatar"
           src="https://scontent.fsgn1-1.fna.fbcdn.net/v/t39.30808-6/426570757_1077978820090378_1845703893674050824_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=P1omuw2_TyYQ7kNvgHo0lh3&_nc_ht=scontent.fsgn1-1.fna&oh=00_AYCFmi7Cp0cUk3cr0yUSnqSXmBGyg48rku-OnpB_xvyqxA&oe=664CE3B4"
@@ -193,4 +256,3 @@ console.log('check',res)
 }
 
 export default Header;
-

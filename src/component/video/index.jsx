@@ -10,7 +10,7 @@ function Video() {
   const [loading, setLoading] = useState(false);
   const getApi = (pageToken = '') => {
     setLoading(true);
-    fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=VN&pageToken=${pageToken}&key=AIzaSyCeEWGfocHlKa3v79iQPhAd5OnHMg35KMg`, {
+    fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=VN&pageToken=${pageToken}&key=AIzaSyBcQS_B_XtJSRTdQZwQqVwjHkXvBuefLlU`, {
         method: "GET",
         headers: { "content-type": "application/json" },
     })

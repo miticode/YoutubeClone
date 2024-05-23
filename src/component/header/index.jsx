@@ -5,17 +5,52 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import "./index.scss";
+
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-function Header() {
-  const[videos,setVideos]= useState([])
-  const [query,setQuery] = useState('')
-  useEffect(()=>{
-
-  },[])
+function Header({ onSearchVideos }) {
   
+ const [query,setQuery] = useState('');
+ useEffect(()=>{
+
+ },[])
+ const handleSearchYoutube = async ()=>{
+  let res = await  axios({
+    "method": "GET",
+    "url": 'https://www.googleapis.com/youtube/v3/search',
+    "params":{
+        'part':'snippet',
+        'maxResults':'20',
+        'key':'AIzaSyCeEWGfocHlKa3v79iQPhAd5OnHMg35KMg',
+        'type': 'video',
+        'q':query
+    }
+})
+if(res && res.data&&res.data.items){
+  let raw = res.data.items;
+  let result = [];
+  if(raw && raw.length > 0){
+    
+    raw.map(item =>{
+      let object= {};
+      object.id= item.id.videoId;
+      object.title= item.snippet.tittle;
+      object.createdAt = item.snippet.publishedAt;
+      object.author = item.snippet.channelTitle;
+      object.description= item.snippet.description;
+      result.push(object);
+    })
+  }
+  
+  onSearchVideos(result);
+}
+console.log('check',res)
+ }
+ 
   return (
     <div className="header">
+      
       <div className="header__left">
         <MenuOutlined className="menuicon" />
         <div className="ytdad">
@@ -87,11 +122,12 @@ function Header() {
         <div className="vn">VN</div>
       </div>
       <div className="header__center">
+     
         <div className="search-container">
-          <input className="input" placeholder="Search" value={query} onChange={(event)=>setQuery(event.target.value)}/>
+          <input className="input" placeholder="Search" value={query} onChange={(event)=> setQuery(event.target.value)} />
         </div>
         <div>
-          <SearchOutlined className="search" />
+         <SearchOutlined className="search" onClick={handleSearchYoutube} />
         </div>
         <div className="but">
           <div className="icon_header">

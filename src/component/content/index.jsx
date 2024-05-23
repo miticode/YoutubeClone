@@ -1,10 +1,11 @@
 import { Avatar, Carousel, Col, Row } from "antd";
 import "./index.scss";
 import { DownOutlined, RightOutlined } from "@ant-design/icons";
-import { useState } from "react";
-import Video from "../video";
 
-function Content() {
+import Video from "../video";
+import { useState } from "react";
+
+function Content({ videos }) {
   const [handleshowscrollbar, setHandleShowScroll] = useState([false]);
   const sidebarStyles = {
     overflowY: handleshowscrollbar ? "auto" : "hidden",
@@ -20,18 +21,7 @@ function Content() {
     alignItems: "center",
     backgroundColor: "black",
   };
- 
-  const formatViewCount = (viewCount) => {
-    if (viewCount >= 1_000_000_000) {
-      return (viewCount / 1_000_000_000).toFixed(1) + 'B';
-    } else if (viewCount >= 1_000_000) {
-      return (viewCount / 1_000_000).toFixed(1) + 'M';
-    } else if (viewCount >= 1_000) {
-      return (viewCount / 1_000).toFixed(1) + 'K';
-    }
-    return viewCount.toString();
-  };
- 
+
   return (
     <div className="content">
       <Row>
@@ -787,43 +777,35 @@ function Content() {
             </h5>
           </Carousel>
           <div className="maincontent1">
-            <Video />
-            <div className="search-result">
-              <div className="left">
-                <iframe 
-              
-                 
-                  src="https://www.youtube.com/embed/caXS47CiDN8?list=RDcaXS47CiDN8"
-                  title="Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
-                  frameBorder={0}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-                
-              </div>
-              <div className="right">
-                <div className="tittle">
-                Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
-                </div  > 
-
-                <div className="created-at">
-                  sadasd
+            {videos && videos.length > 0 ? (
+              videos.map((item) => (
+                <div className="search-result" key={item.id}>
+                  <div className="left">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${item.id}`}
+                      title="Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
+                      frameBorder={0}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="right">
+                    <div className="title">{item.title}</div>
+                    <div className="created-at">{item.createdAt}</div>
+                    <div className="author">{item.author}</div>
+                    <div className="description">{item.description}</div>
+                  </div>
                 </div>
-                <div className="author">
-                  dsadasd
-                </div>
-
-                <div className="description">
-                  ádasdasd
-                </div>
-              </div>
-            </div>
+              ))
+            ) : (
+              <Video />
+            )}
           </div>
         </Col>
       </Row>
     </div>
   );
 }
- 
+
 export default Content;

@@ -661,9 +661,10 @@ z-index: 999;
       width: 100%;
       margin-top: 20px;
       margin-bottom: 20px;
+      padding: 0 100px;
       .left{
        width: 40%;
-        border: 1px solid red;
+        
         padding: 0 10px;
         iframe{
           width: 100%;
@@ -672,8 +673,17 @@ z-index: 999;
       }
       .right{
         width: 60%;
-        border: 1px solid green;
+      
         text-align: left;
+        padding: 5px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .tittle{
+          font-size: 18px;
+          font-weight: 600;
+        }
       }
     }
    }

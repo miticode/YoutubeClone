@@ -35,6 +35,7 @@ function Header({ onSearchVideos }) {
           object.createdAt = item.snippet.publishedAt;
           object.author = item.snippet.channelTitle;
           object.description = item.snippet.description;
+         
         
           result.push(object);
         });
@@ -69,6 +70,11 @@ function Header({ onSearchVideos }) {
       !searchContainerRef.current.contains(event.target)
     ) {
       setShowHistory(false);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearchYoutube();
     }
   };
 
@@ -163,7 +169,7 @@ function Header({ onSearchVideos }) {
             placeholder="Search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            onClick={handleInputClick}
+            onClick={handleInputClick}  onKeyDown={handleKeyDown}
           />
           {showHistory && (
             <div className="search-history">

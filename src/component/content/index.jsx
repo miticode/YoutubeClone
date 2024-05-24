@@ -780,40 +780,35 @@ function Content({ videos }) {
             </h5>
           </Carousel>
           <div className="maincontent1">
-            { videos && videos.length > 0 ? (
-              videos.map((item) => (
-                <Link to={`https://www.youtube.com/watch?v=${item.id}`} className="search-result" key={item.id}>
-                 <div className="left">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${item.id}`}
-                      title="Ổ QUỶ - DMT, Nguyễn Băng Qua, Trần Lả Lướt, Rocky CDE (Prod. by summerdayy) | Official MV"
-                      frameBorder={0}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    />
-                  </div>
-                  <div className="right">
-                  <div className="channel-avatar">
-                {item.channelAvatar && (
-                  <img src={item.channelAvatar} alt="Channel Avatar" />
-                )}
-              </div>
-              
-                    <div className="title">{item.title}</div>
-                   
-                    <div className="created-at">{formatDistanceToNow(new Date(item.createdAt))} ago</div>
-                    <div className="author">{item.author}</div>
-                    <div className="description">{item.description}</div>
-                  </div>
-                </Link>
-                
-              ))
-            ) : (
-           
-              <Video/>
+  {videos && videos.length > 0 ? (
+    videos.map((item) => (
+      <Link to={`https://www.youtube.com/watch?v=${item.id}`} className="search-result" key={item.id}>
+        <div className="left">
+          <iframe
+            src={`https://www.youtube.com/embed/${item.id}`}
+            frameBorder={0}
+            allowFullScreen
+          />
+        </div>
+        <div className="right">
+          <div className="channel-avatar">
+            {item.avatar && (
+              <img src={item.avatar} alt="Channel Avatar" />
             )}
           </div>
+          <div className="title">{item.title}</div>
+          <div className="created-at">{formatDistanceToNow(new Date(item.createdAt))} ago</div>
+          <div className="author">{item.author}</div>
+          <div className="description">{item.description}</div>
+        </div>
+      </Link>
+    ))
+  ) : (
+    <Video />
+  )}
+</div>
+
+
         </Col>
       </Row>
     </div>

@@ -794,6 +794,12 @@ function Content({ videos }) {
                     />
                   </div>
                   <div className="right">
+                  <div className="channel-avatar">
+                {item.channelAvatar && (
+                  <img src={item.channelAvatar} alt="Channel Avatar" />
+                )}
+              </div>
+              
                     <div className="title">{item.title}</div>
                    
                     <div className="created-at">{formatDistanceToNow(new Date(item.createdAt))} ago</div>
@@ -804,7 +810,8 @@ function Content({ videos }) {
                 
               ))
             ) : (
-              <Video />
+           
+              <Video/>
             )}
           </div>
         </Col>

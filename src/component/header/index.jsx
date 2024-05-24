@@ -2,13 +2,15 @@ import { AudioOutlined, MenuOutlined, SearchOutlined } from "@ant-design/icons";
 import "./index.scss";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 function Header({ onSearchVideos }) {
   const [query, setQuery] = useState("");
   const [searchHistory, setSearchHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
   const searchContainerRef = useRef(null);
-
+ 
   const handleSearchYoutube = async () => {
     let res = await axios({
       method: "GET",
@@ -20,7 +22,7 @@ function Header({ onSearchVideos }) {
         type: "video",
         q: query,
       },
-    });
+    }); 
 
     if (res && res.data && res.data.items) {
       let raw = res.data.items;
@@ -33,9 +35,11 @@ function Header({ onSearchVideos }) {
           object.createdAt = item.snippet.publishedAt;
           object.author = item.snippet.channelTitle;
           object.description = item.snippet.description;
+        
           result.push(object);
         });
       }
+      
       onSearchVideos(result);
     }
 
@@ -44,7 +48,7 @@ function Header({ onSearchVideos }) {
       if (!updatedHistory.includes(query)) {
         updatedHistory.unshift(query);
       }
-      return updatedHistory.slice(0, 10); // Keep only the latest 5 searches
+      return updatedHistory.slice(0, 10); 
     });
 
     setShowHistory(false);
@@ -83,7 +87,8 @@ function Header({ onSearchVideos }) {
     <div className="header">
       <div className="header__left">
         <MenuOutlined className="menuicon" />
-        <div className="ytdad" onClick={handleInputClick}>
+       <Link to={"/"} className="ytdad">
+      
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="yt-logo-updated-svg_yt1"
@@ -147,7 +152,8 @@ function Header({ onSearchVideos }) {
               </g>
             </svg>
           </svg>
-        </div>
+        
+       </Link>
         <div className="vn">VN</div>
       </div>
       <div className="header__center">
